@@ -1,0 +1,56 @@
+body{
+background: url("../images/Searchs_130.png") no-repeat center center fixed;
+-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+.body_wave{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	height:100vh;
+}
+.wave{
+	position:relative;
+	-webkit-box-reflect:below -12px line-gradient(transparent, rgba(0,0,0,0.2));
+	
+}
+.wave span{
+	position:relative;
+	display:inline-block;
+	color:#000;
+	font-size:1.5em;
+	font-weight: bold;
+	text-transform:uppercase;
+	animation:animate 1.5s ease-in-out infinite;
+	animation-delay: calc(.1s * var(--c));
+}
+@keyframes animate{
+	0%,100%{
+		transform:translateY(0px);
+	}
+	20%{
+		transform:translateY(-20px);
+	}
+	40%{
+		transform:translateY(0px);
+	}
+}

@@ -12,44 +12,12 @@
 	<link href="{{ url_for('static', filename='css/new.css') }}" rel="stylesheet" />
 </head>
 <body>
-
-<div class="body_wave">
-	<div class="wave">
-		<span style="--c:1;">W</span>
-		<span style="--c:2;">E</span>
-		<span style="--c:3;">L</span>
-		<span style="--c:4;">C</span>
-		<span style="--c:5;">O</span>
-		<span style="--c:6;">M</span>
-		<span style="--c:7;">E</span>
-		<span style="--c:8;">&nbsp;</span>
-		<span style="--c:9;">T</span>
-		<span style="--c:10;">O</span>
-		<span style="--c:11;">&nbsp;</span>
-		<span style="--c:12;">G</span>
-		<span style="--c:13;">O</span>
-		<span style="--c:14;">G</span>
-		<span style="--c:15;">'</span>
-		<span style="--c:16;">S</span>
-		<span style="--c:17;">&nbsp;</span>
-		<span style="--c:18;">V</span>
-		<span style="--c:19;">O</span>
-		<span style="--c:20;">I</span>
-		<span style="--c:21;">C</span>
-		<span style="--c:22;">E</span>
-	</div>
-</div>
-<script>
-	$(window).on("load",function(){
-		$(".body_wave").slideUp(5000)
-	});
-</script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <div class="container">
     <br/>
 	<div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8">
-                            <form class="card card-sm" action = "/search" method = "post">
+							<form class="card card-sm" action = "/search" method = "post">
                                 <div class="card-body row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <i class="fas fa-search h4 text-body"></i>
@@ -65,6 +33,31 @@
                                     <!--end of col-->
                                 </div>
                             </form>
+							<br>
+							<div class="card card-sm">
+							{%for i in value['questions']:%}
+								<form action = "/answer" method = "post">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <!--div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+                                    <!--end of col-->
+									<input type="hidden" name = "question" value="{{i}}">
+                                    <div class="col">
+                                        <!--textarea class="form-control form-control-lg form-control-borderless" type="text"  name = "question" contenteditable>{{answer}}</textarea-->
+										<button type="submit" >
+										<span class="form-control form-control-lg form-control-borderless" role="textbox" contenteditable="false" >
+										
+										
+										{%print(i)%}
+										
+										</span>
+										</button>
+                                    </div>
+                                </div>
+								</form>
+							{%endfor%}
+							</div>
                         </div>
                         <!--end of col-->
                     </div>
