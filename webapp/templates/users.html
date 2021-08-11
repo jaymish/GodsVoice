@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>God's Voice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="{{ url_for('static', filename='css/new_1.css') }}" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="{{ url_for('static', filename='css/new.css') }}" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light" style="opacity: 0.7; background-color: #fff;">
+  <div class="container-fluid" >
+    <a class="navbar-brand" href="{{ url_for('home') }}">God's-Voice</a>
+    <div class="justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		<li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav class="navbar sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="opacity: 0;">S</a>
+  </div>
+</nav>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<div class="container">
+    <br/>
+	<div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+							<div class="card card-sm">
+							<table class="table">
+							<tr>
+							<th scope="col">Username</th>
+							<th scope="col">Email</th>
+							<th scope="col">Admin</th>
+							<th scope="col">Super-admin</th>
+							<th scope="col">Remove</th>
+							</tr>		
+							</thead>
+							<tbody>
+							{% for row in data %}
+							{%if row['username']!=current%}
+								<form action = "/answer" method = "post">
+								<tr>
+								<td scope="row">{{row['username']}}</td>
+								<td>{{row['email']}}</td>
+								<td>{%if row['is_admin']==1%}<button class="btn btn-lg btn-danger" type="button" onclick="window.location.href='../update/{{row['id']}}/is_admin/0';">Revoke</button>{%else%}<button class="btn btn-lg btn-success" type="button" onclick="window.location.href='../update/{{row['id']}}/is_admin/1';">Assign</button>{%endif%}</td>
+								<td>{%if row['is_superadmin']==1%}<button class="btn btn-lg btn-danger" type="button" onclick="window.location.href='../update/{{row['id']}}/is_superadmin/0';">Revoke</button>{%else%}<button class="btn btn-lg btn-success" type="button" onclick="window.location.href='../update/{{row['id']}}/is_superadmin/1';">Assign</button>{%endif%}</td>
+								<td>{%if row['is_deleted']==0%}<button class="btn btn-lg btn-danger" type="button" onclick="window.location.href='../delete/{{row['id']}}';">Delete</button>{%endif%}</td>
+								</tr>
+								</form>
+							{%endif%}
+							{%endfor%}
+							</tbody>
+							</table>
+							</div>
+                        </div>
+                        <!--end of col-->
+                    </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

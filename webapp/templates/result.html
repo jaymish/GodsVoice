@@ -12,6 +12,26 @@
 	<link href="{{ url_for('static', filename='css/new.css') }}" rel="stylesheet" />
 </head>
 <body>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light" style="opacity: 0.7; background-color: #fff;">
+  <div class="container-fluid" >
+    <a class="navbar-brand" href="{{ url_for('home') }}">God's-Voice</a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('admin') }}">Login</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('register') }}">Signup</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav class="navbar sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="opacity: 0;">S</a>
+  </div>
+</nav>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <div class="container">
     <br/>
@@ -35,7 +55,7 @@
                             </form>
 							<br>
 							<div class="card card-sm">
-							{%for i in value['questions']:%}
+							{%for i in value:%}
 								<form action = "/answer" method = "post">
                                 <div class="card-body row no-gutters align-items-center">
                                     <!--div class="col-auto">
@@ -46,7 +66,7 @@
                                     <div class="col">
                                         <!--textarea class="form-control form-control-lg form-control-borderless" type="text"  name = "question" contenteditable>{{answer}}</textarea-->
 										<button type="submit" >
-										<span class="form-control form-control-lg form-control-borderless" role="textbox" contenteditable="false" >
+										<span class="form-control form-control-lg form-control-borderless" role="textbox" contenteditable="false" style="text-align: left;">
 										
 										
 										{%print(i)%}
